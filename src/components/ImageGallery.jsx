@@ -47,6 +47,7 @@ const ImageGallery = ({
                         style={{
                             animationDelay: `${index * 100}ms`
                         }}
+                        loading="lazy"
                     >
                         <ImageCard
                             image={image}

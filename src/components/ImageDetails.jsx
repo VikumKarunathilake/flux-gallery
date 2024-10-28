@@ -29,13 +29,14 @@ const ImageDetails = ({ image, onClose }) => {
                     <DialogTitle id="dialog-title">{image.imgbb_title || 'Image Details'}</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4">
-                    <img
-                        src={image.imgbb_display_url}
-                        alt={image.imgbb_title}
-                        className="rounded-lg w-full"
-                        loading="lazy"
-                        style={{ height: '500px', width: 'auto' }}
-                    />
+                    <div className="flex justify-center">
+                        <img
+                            src={image.imgbb_display_url}
+                            alt={image.imgbb_title}
+                            className="rounded-lg max-h-[500px] max-w-full"
+                            loading="lazy"
+                        />
+                    </div>
                     <div className="grid grid-cols-2 gap-4">
                         <DetailItem
                             label="Dimensions"

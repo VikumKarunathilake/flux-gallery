@@ -28,11 +28,11 @@ const ImageCard = memo(({ image, onSelect }) => {
             }}
             tabIndex={0}
             role="button"
-            aria-label={`View details for ${image.imgbb_title || 'Untitled image'}`}
+            aria-label={`View details for ${image.generation_prompt || 'Untitled image'}`}
         >
             <CardContent className="p-3">
                 <div
-                    className="relative w-full"
+                    className="relative w-full flex items-center justify-center"
                     style={{ paddingTop }}
                 >
                     {/* Placeholder/Loading state */}
@@ -47,9 +47,9 @@ const ImageCard = memo(({ image, onSelect }) => {
                     <img
                         ref={imageRef}
                         src={image.imgbb_display_url}
-                        alt={image.imgbb_title || 'Generated Image'}
+                        alt={image.generation_prompt || 'Generated Image'}
                         className={cn(
-                            "absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-300",
+                            "absolute inset-0 w-full h-full object-contain rounded-md transition-opacity duration-300",
                             loaded ? "opacity-100" : "opacity-0"
                         )}
                         loading="lazy"
@@ -67,7 +67,7 @@ const ImageCard = memo(({ image, onSelect }) => {
 
                 <div className="mt-2 space-y-1">
                     <h3 className="font-semibold truncate text-sm">
-                        {image.imgbb_title || 'Untitled'}
+                        {image.generation_prompt || 'Untitled'}
                     </h3>
                     <p className="text-xs text-muted-foreground truncate">
                         {new Date(image.generation_timestamp).toLocaleDateString()}
@@ -87,7 +87,8 @@ ImageCard.propTypes = {
         imgbb_title: PropTypes.string,
         generation_timestamp: PropTypes.string.isRequired,
         imgbb_width: PropTypes.number.isRequired,
-        imgbb_height: PropTypes.number.isRequired
+        imgbb_height: PropTypes.number.isRequired,
+        generation_prompt: PropTypes.string,
     }).isRequired,
     onSelect: PropTypes.func.isRequired,
     priority: PropTypes.bool

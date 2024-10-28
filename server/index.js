@@ -98,10 +98,7 @@ app.get('/api/images', async (req, res) => {
     const connection = await pool.getConnection();
     try {
       const [rows] = await connection.execute(`
-        SELECT 
-          id, imgbb_display_url, imgbb_title, generation_timestamp,
-          imgbb_width, imgbb_height, imgbb_size
-        FROM generated_images
+        SELECT * FROM generated_images
         ORDER BY generation_timestamp DESC
       `, [startIndex, perPage]);
 
