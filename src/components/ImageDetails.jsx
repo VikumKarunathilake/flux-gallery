@@ -1,4 +1,3 @@
-// src/components/ImageDetails.jsx
 import PropTypes from 'prop-types';
 import {
     Dialog,
@@ -24,14 +23,14 @@ DetailItem.propTypes = {
 
 const ImageDetails = ({ image, onClose }) => {
     return (
-        <Dialog open={true} onOpenChange={onClose}>
+        <Dialog open={true} onOpenChange={onClose} aria-labelledby="dialog-title">
             <DialogContent className="max-w-4xl">
                 <DialogHeader>
-                    <DialogTitle>{image.imgbb_title || 'Image Details'}</DialogTitle>
+                    <DialogTitle id="dialog-title">{image.imgbb_title || 'Image Details'}</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4">
                     <img
-                        src={image.imgbb_url}
+                        src={image.imgbb_display_url}
                         alt={image.imgbb_title}
                         className="rounded-lg w-full"
                         loading="lazy"
@@ -64,6 +63,7 @@ ImageDetails.propTypes = {
     image: PropTypes.shape({
         imgbb_title: PropTypes.string,
         imgbb_url: PropTypes.string.isRequired,
+        imgbb_display_url: PropTypes.string.isRequired,
         generation_width: PropTypes.number.isRequired,
         generation_height: PropTypes.number.isRequired,
         generation_steps: PropTypes.number.isRequired,
