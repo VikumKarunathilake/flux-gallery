@@ -1,4 +1,3 @@
-// vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -11,13 +10,16 @@ export default defineConfig({
     },
   },
   server: {
-    open: true,
-    cors: true,
+    host: true,
+    port: 5173,
+    watch: {
+      usePolling: true,
+    },
   },
   build: {
     outDir: 'dist',
     sourcemap: true,
     minify: 'esbuild',
-    target: 'esnext'
-  }
+    target: 'esnext',
+  },
 });

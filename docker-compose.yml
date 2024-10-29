@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - '3000:80' # Expose the container’s port 80 on host’s port 3000
+    environment:
+      - VITE_API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+
+  backend:
+    image: backend-image
+    ports:
+      - '8000:8000'
